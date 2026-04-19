@@ -21,6 +21,7 @@
         export PATH="$PNPM_HOME:$PATH"
         pnpm i -g --frozen-lockfile
 
+        cd ../app
         code .
 
         exec fish -C 'function fish_prompt
