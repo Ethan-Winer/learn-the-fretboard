@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { StringAndFretPrompt } from './string-and-fret-prompt/string-and-fret-prompt';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, StringAndFretPrompt],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
