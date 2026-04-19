@@ -1,0 +1,5 @@
+# PNPM
+node_modules
+.pnpm
+store
+ng
