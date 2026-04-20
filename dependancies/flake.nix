@@ -20,12 +20,10 @@
         export PNPM_HOME="$PWD/pnpm_home"
         export PATH="$PNPM_HOME:$PATH"
         
-        pnpm i -g @angular/cli
-        pnpm i -g web-audio-api
-        pnpm i -g @types/audioworklet
-        ng config -g cli.packageManager pnpm
+        pnpm install --global @angular/cli
 
         cd ../app
+        pnpm install
         code .
 
         exec fish -C 'function fish_prompt
