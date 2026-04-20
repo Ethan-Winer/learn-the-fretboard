@@ -11,6 +11,9 @@ importers:
       '@angular/cli':
         specifier: ^21.2.7
         version: 21.2.7
+      '@types/audioworklet':
+        specifier: ^0.0.97
+        version: 0.0.97
 
 packages:
 
@@ -333,6 +336,9 @@ packages:
   '@tufjs/models@4.1.0':
     resolution: {integrity: sha512-Y8cK9aggNRsqJVaKUlEYs4s7CvQ1b1ta2DVPyAimb0I2qhzjNk+A+mxvll/klL0RlfuIUei8BF7YWiua4kQqww==}
     engines: {node: ^20.17.0 || >=22.9.0}
+
+  '@types/audioworklet@0.0.97':
+    resolution: {integrity: sha512-z4RRI9147KXm3b1U4dR/XFfsxSR5yymEWEJT+Td0tCJyRkyGccIXEL09W7c5TcbDd51qKR/+LrO2SPC1SL2RLA==}
 
   '@yarnpkg/lockfile@1.1.0':
     resolution: {integrity: sha512-GpSwvyXOcOOlV70vbnzjj4fW5xW/FdUF6nQEt1ENy7m4ZCczi1+/buVUPAqmGfqznsORNFzUMjctTIp8a9tuCQ==}
@@ -1560,6 +1566,8 @@ snapshots:
     dependencies:
       '@tufjs/canonical-json': 2.0.0
       minimatch: 10.2.5
+
+  '@types/audioworklet@0.0.97': {}
 
   '@yarnpkg/lockfile@1.1.0': {}
 

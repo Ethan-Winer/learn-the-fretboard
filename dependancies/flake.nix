@@ -19,7 +19,11 @@
       shellHook = ''
         export PNPM_HOME="$PWD/pnpm_home"
         export PATH="$PNPM_HOME:$PATH"
-        pnpm i -g --frozen-lockfile
+        
+        pnpm i -g @angular/cli
+        pnpm i -g web-audio-api
+        pnpm i -g @types/audioworklet
+        ng config -g cli.packageManager pnpm
 
         cd ../app
         code .
