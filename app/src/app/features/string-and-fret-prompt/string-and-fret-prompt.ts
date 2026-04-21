@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { PitchDetector } from '../../core/services/pitch-detector/pitch-detector';
 
 @Component({
   selector: 'string-and-fret-prompt',
@@ -7,8 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './string-and-fret-prompt.css',
 })
 export class StringAndFretPrompt {
-  
+  private pitchDetector = inject(PitchDetector);
+
+
   private strings:number[] = [82.41, 110, 146.83, 196, 246.94, 329.63];
+
 
   public currentString:number = 0;
   public currentFret:number = 0;
@@ -39,6 +43,7 @@ export class StringAndFretPrompt {
 
   onButtonClick():void {
     this.getRandomNote();
+    this.pitchDetector.resume()
   }
 
 
