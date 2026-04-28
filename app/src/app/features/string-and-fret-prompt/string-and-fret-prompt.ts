@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { PitchDetector } from '../../core/services/pitch-detector/pitch-detector';
+import { Component, effect, inject } from '@angular/core';
+import { AudioService } from '../../core/services/audio-service/audio-service';
 
 @Component({
   selector: 'string-and-fret-prompt',
@@ -8,44 +8,41 @@ import { PitchDetector } from '../../core/services/pitch-detector/pitch-detector
   styleUrl: './string-and-fret-prompt.css',
 })
 export class StringAndFretPrompt {
-  private pitchDetector = inject(PitchDetector);
+  private audio = inject(AudioService);
+  public currentString: number = 0;
+  public currentFret: number = 0;
+  public noteNumber: number = 0;
 
-
-  private strings:number[] = [82.41, 110, 146.83, 196, 246.94, 329.63];
-
-
-  public currentString:number = 0;
-  public currentFret:number = 0;
-  public frequency:number = 0;
-  
   constructor() {
     this.getRandomNote();
+    effect(() => {
+      this.audio.foundTargetNote()
+      // this.getRandomNote()
+      // this.audio.setTargetNote(this.noteNumber)
+      console.log("found")
+    })
   }
 
-  getRandomNote():void {
-    let stringNumber = Math.floor(Math.random() * 6);
-    let fretNumber = Math.floor(Math.random() * 25);
-    let stringFrequency = this.strings[stringNumber];
-    
-    let noteFrequency:number;
-    if (fretNumber > 0) {
-      let fretMultiplier = Math.pow(2, 1/12);
-      noteFrequency = stringFrequency * Math.pow(fretMultiplier, fretNumber - 1);
+  getRandomNote(): void {
+    let stringNumber = Math.floor(Math.random() * 6) + 1;
+    let fretNumber = Math.floor(Math.random() * 13);
+    let noteNumber = (6 - stringNumber) * 5 + fretNumber
+
+    //  B string strikes again
+    if (stringNumber <= 2) {
+      noteNumber--
     }
-    else {
-      noteFrequency = stringFrequency;
-    }
-    
-    this.currentString = stringNumber + 1;
+
+
+    this.currentString = stringNumber;
     this.currentFret = fretNumber;
-    this.frequency = noteFrequency;
+    this.noteNumber = noteNumber
   }
 
-  onButtonClick():void {
+  onButtonClick(): void {
     this.getRandomNote();
-    this.pitchDetector.resume()
+    this.audio.setTargetNote(this.noteNumber)
+    this.audio.resume()
   }
 
-
-    
 }

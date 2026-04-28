@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PitchDetector } from './pitch-detector';
+import { AudioService } from './audio-service';
 
 describe('PitchDetector', () => {
-  let service: PitchDetector;
+  let service: AudioService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PitchDetector);
+    service = TestBed.inject(AudioService);
   });
 
   it('should be created', () => {
