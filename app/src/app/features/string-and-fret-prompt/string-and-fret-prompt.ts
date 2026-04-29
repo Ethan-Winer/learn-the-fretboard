@@ -1,5 +1,6 @@
-import { Component, effect, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, effect, inject } from '@angular/core';
 import { AudioService } from '../../core/services/audio-service/audio-service';
+
 
 @Component({
   selector: 'string-and-fret-prompt',
@@ -9,21 +10,29 @@ import { AudioService } from '../../core/services/audio-service/audio-service';
 })
 export class StringAndFretPrompt {
   private audio = inject(AudioService);
+  private cdr = inject(ChangeDetectorRef)
   public currentString: number = 0;
   public currentFret: number = 0;
-  public noteNumber: number = 0;
+  public targetNote: number = 0;
+
 
   constructor() {
-    this.getRandomNote();
-    effect(() => {
-      this.audio.foundTargetNote()
-      // this.getRandomNote()
-      // this.audio.setTargetNote(this.noteNumber)
-      console.log("found")
+    this.randomizeTargetNote()
+
+    this.audio.currentNoteSubject.subscribe({
+      next: (note) => {
+        if (this.targetNote == note) {
+          this.randomizeTargetNote()
+
+          //  updates component variables because subscribe event
+          //  doesn't do that automatically
+          this.cdr.markForCheck()
+        }
+      }
     })
   }
 
-  getRandomNote(): void {
+  randomizeTargetNote() {
     let stringNumber = Math.floor(Math.random() * 6) + 1;
     let fretNumber = Math.floor(Math.random() * 13);
     let noteNumber = (6 - stringNumber) * 5 + fretNumber
@@ -34,15 +43,13 @@ export class StringAndFretPrompt {
     }
 
 
+    // return noteNumber
     this.currentString = stringNumber;
     this.currentFret = fretNumber;
-    this.noteNumber = noteNumber
+    this.targetNote = noteNumber
   }
 
-  onButtonClick(): void {
-    this.getRandomNote();
-    this.audio.setTargetNote(this.noteNumber)
+  onButtonClick() {
     this.audio.resume()
   }
-
 }

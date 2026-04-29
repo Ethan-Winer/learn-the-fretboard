@@ -1,4 +1,5 @@
 import { Injectable, signal } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,9 +8,8 @@ export class AudioService {
   private audioContext:AudioContext
   private pitchDetectorNode!:AudioWorkletNode;
   private sampleRate:number = 44100;
-  private targetNote!:number;
-  
-  public foundTargetNote = signal<boolean>(true)
+
+  public currentNoteSubject = new Subject<number>()
 
   constructor() {
     let options:AudioContextOptions = {
@@ -41,7 +41,7 @@ export class AudioService {
     //  on processor message recieved function
     this.pitchDetectorNode.port.onmessage = (event) => {
 
-      let note = (12 * Math.log2(event.data / 440));
+      let note = (12 * Math.log2(event.data / 440)) + 29;
       let cents = (note % 1) * 100
       
       if (cents > 80) {
@@ -54,10 +54,7 @@ export class AudioService {
         return
       }
 
-      note += 29
-      if (note == this.targetNote) {
-        this.foundTargetNote.update((value) => !value)
-      }
+      this.currentNoteSubject.next(note)
     }
     
     //  sending audio input to pitch detector
@@ -70,9 +67,5 @@ export class AudioService {
   
   async resume() {
     this.audioContext.resume();
-  }
-
-  setTargetNote(targetNote:number) {
-    this.targetNote = targetNote
   }
 }
