@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StringAndFretPrompt } from './string-and-fret-prompt';
+import { GameContainer } from './game-container';
 
-describe('StringAndFretPrompt', () => {
-  let component: StringAndFretPrompt;
-  let fixture: ComponentFixture<StringAndFretPrompt>;
+describe('GameContainer', () => {
+  let component: GameContainer;
+  let fixture: ComponentFixture<GameContainer>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StringAndFretPrompt],
+      imports: [GameContainer],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(StringAndFretPrompt);
+    fixture = TestBed.createComponent(GameContainer);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

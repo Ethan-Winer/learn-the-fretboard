@@ -1,0 +1,10 @@
+<div id="container">
+    <p>
+        String: {{ this.gameService.targetString() | stringNumberToLetter }}<br>
+        Note: {{ this.gameService.targetNote() | noteNumberToLetter }}<br>
+    </p>
+    <div id="button-container">
+        <button (click)="onButtonClick()" > {{ isRunning ? "Stop" : "Start" }}</button>
+    </div>
+
+</div>

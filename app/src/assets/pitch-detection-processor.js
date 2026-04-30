@@ -1,7 +1,7 @@
 import { PitchDetector } from "https://esm.sh/pitchy@4";
 
 export class PitchDetectorProcessor extends AudioWorkletProcessor {
-    bufferSize = 1024;
+    bufferSize = 2048;
     pitchDetector;
     buffer;
     sampleRate;

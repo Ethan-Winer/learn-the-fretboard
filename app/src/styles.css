@@ -29,7 +29,8 @@
 
     color: var(--text);
     background-color: var(--base);
-    box-shadow: 2px 2px 3px var(--crust);
+    
+    font-family: Arial;
 }
 
 * {

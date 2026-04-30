@@ -8,8 +8,9 @@ export class AudioService {
   private audioContext:AudioContext
   private pitchDetectorNode!:AudioWorkletNode;
   private sampleRate:number = 44100;
+  private lastDetectedNote:number = -1;
 
-  public currentNoteSubject = new Subject<number>()
+  public newNoteDetected = new Subject<number>()
 
   constructor() {
     let options:AudioContextOptions = {
@@ -18,7 +19,7 @@ export class AudioService {
     }
     this.audioContext = new AudioContext(options);
     
-    this.suspend();
+    this.suspendAudioInput();
     this.setUpAudioContext()
   }
 
@@ -50,22 +51,22 @@ export class AudioService {
       else if (cents < 20) {
         note = Math.floor(note)
       }
-      else {
-        return
-      }
 
-      this.currentNoteSubject.next(note)
+      if (note != this.lastDetectedNote) {
+        this.newNoteDetected.next(note)
+        this.lastDetectedNote = note
+      }
     }
     
     //  sending audio input to pitch detector
     audioInput.connect(this.pitchDetectorNode)
   };
   
-  async suspend() {
+  async suspendAudioInput() {
     this.audioContext.suspend();
   }
   
-  async resume() {
+  async resumeAudioInput() {
     this.audioContext.resume();
   }
 }
