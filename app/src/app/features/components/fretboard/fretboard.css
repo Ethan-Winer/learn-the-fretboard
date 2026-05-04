@@ -1,0 +1,8 @@
+* {
+    background-color: hsl(38, 49%, 68%)
+}
+
+#neck-container {
+    display: flex;
+    background-color: blue;
+}

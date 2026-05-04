@@ -1,6 +1,6 @@
 :root {
     /* Catppuccin Mocha color pallete */
-    --rosewater: #f4dbd6;
+    /* --rosewater: #f4dbd6;
     --flamingo: #f0c6c6;
     --pink: #f5bde6;
     --mauve: #c6a0f6;
@@ -25,7 +25,28 @@
     --surface-0: #363a4f;
     --base: #24273a;
     --mantle: #1e2030;
-    --crust: #181926;
+    --crust: #181926; */
+
+/* 
+    --base: hsl(240, 6%, 15%);
+    --surface-0: hsl(240, 6%, 25%);
+    --text: hsl(240, 6%, 85%); */
+    --base: hsl(240, 6%, 10%);
+    --surface-0: hsl(240, 6%, 15%);
+    --surface-1: hsl(240, 6%, 20%);
+    --surface-2: hsl(240, 6%, 25%);
+    /* --text: hsl(240, 6%, 90%); */
+    --text: hsl(278, 100%, 98%);
+    --teal: hsl(170, 40%, 60%);
+    --red: hsl(4, 82%, 67%);
+
+
+
+
+    --small-shadow:
+    inset 0px 1px 2px hsl(240, 6%, 35%),
+    0px 1px 2px hsl(240, 6%, 10%),
+    0px 2px 4px hsl(240, 6%, 5%);
 
     color: var(--text);
     background-color: var(--base);

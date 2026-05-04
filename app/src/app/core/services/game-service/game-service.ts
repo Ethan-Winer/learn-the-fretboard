@@ -25,9 +25,9 @@ export class GameService {
     }
   }
 
-  private randomizeNote() {
+  public randomizeNote() {
     let stringNumber = Math.floor(Math.random() * 6) + 1;
-    let fretNumber = Math.floor(Math.random() * 12);
+    let fretNumber = Math.floor(Math.random() * 24);
     let noteNumber = (6 - stringNumber) * 5 + fretNumber
 
     //  B string strikes again

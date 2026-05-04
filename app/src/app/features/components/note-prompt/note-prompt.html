@@ -1,0 +1,23 @@
+<div id="container">
+    <div id="note-indicator">
+        <h1>Note:</h1>
+        <p class="inset">
+
+            {{ gameService.targetNote() | noteNumberToLetter }}
+        <p>
+    </div>
+    <div id="string-indicator">
+        <h1>String:</h1>
+        @for (string of strings; track $index) {
+        <div class="string-half-container" [style.align-items]="$index >= 3 ? 'last baseline' : 'first baseline'">
+            <div class="left string-half" [style.height.%]="string.height"
+                [class.active]="isActive(string.number, true)"></div>
+            <div class="right string-half" [style.height.%]="string.height"
+                [class.active]="isActive(string.number, false)"></div>
+        </div>
+        }
+    </div>
+</div>
+<button (click)="gameService.startGame()">start</button>
+<button (click)="gameService.randomizeNote()">next</button>
+<input (change)="strings.reverse()" type="checkbox">

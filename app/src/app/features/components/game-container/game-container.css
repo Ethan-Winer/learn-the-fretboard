@@ -16,21 +16,14 @@
     background-color: var(--green);
     border: none;
     box-shadow: 0px 2px 10px 0px var(--crust);
-
-    /* background-color: var(--surface-0);
-    color: var(--text);
-    border: 5px solid var(--green);
-    border-radius: 5px;
-    padding: 2px;
-    font-size: 30px; */
 }
 
 p {
     width: 600px;
     background-color: var(--surface-0);
     margin: auto;
-    font-size: 100px;
+    font-size: 6.25rem;
     border-radius: 15px;
     padding: 10px;
-    box-shadow: 0px 2px 10px 0px var(--crust);
+    box-shadow: var(--small-shadow);
 }
