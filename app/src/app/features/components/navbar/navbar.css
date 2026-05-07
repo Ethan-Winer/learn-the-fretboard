@@ -1,0 +1,24 @@
+#container {
+    /* height: 60px; */
+    width: 95vw;
+    margin: auto;
+    margin-top: 10px;
+    /* background-color: var(--surface-2); */
+    background: linear-gradient(180deg, var(--surface-2), var(--surface-1));
+    box-shadow: 0px 1px 10px #111;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 40px;
+}
+
+p {
+    font-size: 36px;
+    color: var(--teal);
+    text-shadow: 0 0 7px hsl(170, 40%, 30%);
+    background-color: var(--surface-0);
+    box-shadow: inset 0px 1px 10px #111, 0px 3px 3px var(--surface-2);
+    padding: 10px 15px 10px 15px;
+    border-radius: 40px;
+
+}

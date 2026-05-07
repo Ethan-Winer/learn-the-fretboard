@@ -1,0 +1,12 @@
+octave notation as an option
+tab view by default
+string left, note right
+do set ammount, give percentage correct
+timer to miss automatically in ms
+game modes
+average time in individual game
+give a little comment at the end about what was good and bad that round
+
+FAR OFF END GOALS
+following a song
+multipitch detection

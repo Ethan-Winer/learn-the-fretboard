@@ -12,12 +12,12 @@ import { NoteNumberToLetterPipe } from '../../../shared/pipes/note-number-to-let
 export class NotePrompt {
   gameService = inject(GameService);
   strings = [
-    {number: 6, height: 70},
-    {number: 5, height: 60},
+    {number: 1, height: 40},
+    {number: 2, height: 45},
+    {number: 3, height: 50},
     {number: 4, height: 55},
-    {number: 3, height: 45},
-    {number: 2, height: 40},
-    {number: 1, height: 30}
+    {number: 5, height: 60},
+    {number: 6, height: 65},
   ]
 
   constructor() {
