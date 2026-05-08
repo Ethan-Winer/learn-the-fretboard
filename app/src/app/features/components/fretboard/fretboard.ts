@@ -12,24 +12,28 @@ import { NeckSegment } from './neck-segment/neck-segment';
 export class Fretboard {
   fretCount = input<number>(24);
   tabView = input<boolean>(true);
-  activeNotes = input<Record<number, number[]>>({})
+  targetNotes = input<Record<number, number[]>>({})
   inactiveNotes = input<Record<number, number[]>>({})
   incorrectNotes = input<Record<number, number[]>>({})
   fretboardTable!:string[][];
+  neckSegmentLengths = new Array<number>()
 
   constructor() {
     this.makeFretBoardTable();
+    this.getNeckSegmentLengths(2000);
   }
 
   makeFretBoardTable() {
-    this.fretboardTable = new Array<Array<string>>(6)
-    for(let stringNumber = 0; stringNumber < this.fretboardTable.length; stringNumber++) {
-      for (let fretNumber = 0; fretNumber < this.fretCount(); fretNumber++) {
-        this.fretboardTable[stringNumber][fretNumber] = "default";
+    this.fretboardTable = new Array<Array<string>>()
+    for(let stringNumber = 0; stringNumber < 6; stringNumber++) {
+      this.fretboardTable.push(new Array<string>())
+      for (let fretNumber = 1; fretNumber <= this.fretCount(); fretNumber++) {
+        this.fretboardTable[stringNumber].push("default");
       }
     }
+    console.log(this.fretboardTable)
 
-    this.addToFretboardTable(this.activeNotes(), "active");
+    this.addToFretboardTable(this.targetNotes(), "active");
     this.addToFretboardTable(this.inactiveNotes(), "inactive");
 
     this.addToFretboardTable(this.incorrectNotes(), "incorrect");
@@ -43,4 +47,18 @@ export class Fretboard {
       })
     })
   }
+
+  getNeckSegmentLengths(neckLength:number) {
+    let remainingNeckSpace = neckLength;
+    for(let i = 0; i < this.fretCount(); i++) {
+      let segmentLength = remainingNeckSpace / 17.817
+      this.neckSegmentLengths.push(segmentLength);
+      remainingNeckSpace -= segmentLength;
+    }
+  }
+
+  onClick(sringNumber:number, fretNumber:number) {
+    console.log((sringNumber + 1) + ", " + (fretNumber + 1))
+  }
+
 }

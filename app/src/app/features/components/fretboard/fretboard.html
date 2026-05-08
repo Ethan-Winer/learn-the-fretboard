@@ -1,3 +1,10 @@
 <div id="neck-container">
-
+    @for (fretSelection of fretboardTable; track $index; let stringNumber = $index) {
+        <div class="string-container">
+            @for(fretState of fretSelection; track $index; let fretNumber = $index) {
+                <div class="string-segment {{ fretState }}" [style.width.px]="neckSegmentLengths[$index]" (click)="onClick(stringNumber, fretNumber)">{{ $index + 1}}</div>
+            }
+        </div>
+    }
 </div>
+

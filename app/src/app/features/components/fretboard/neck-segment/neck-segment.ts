@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'neck-segment',
@@ -7,10 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './neck-segment.css',
 })
 export class NeckSegment {
-  note!:number;
-  fret!:number
-
-  // constructor(note:number) {
-  //   this.note = note;
-  // }
+  fretNumber = input<number>();
+  state = input<string>();
+  width = input<number>(50);
 }
