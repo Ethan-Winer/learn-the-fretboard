@@ -1,1 +1,7 @@
-
+<div [style.width.px]="containerWidth" id="container">
+    @for(stringState of stringStates(); track $index) {
+        <div class="string-segment-container">
+            <div class="string-segment" [style.height.px]="stringHeights[$index]"></div>
+        </div>
+    }
+</div>

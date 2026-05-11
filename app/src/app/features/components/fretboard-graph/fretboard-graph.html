@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="string-line-container">
+        <div class="string-line"></div>
+    </div>
+
+    <div class="notes-container">
+        
+        @for(stringNumber of getNoteDataKeys(); track $index) {
+            <div class="guitar-string">
+                @for(noteState of noteData[stringNumber]; track $index) {
+                    <div class="note">
+                        <div (click)="print(stringNumber + ', ' + $index)" class="note-dot">
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

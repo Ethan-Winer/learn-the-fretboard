@@ -1,4 +1,4 @@
-<div id="neck-container">
+<!-- <div id="neck-container">
     @for (fretSelection of fretboardTable; track $index; let stringNumber = $index) {
         <div class="string-container">
             @for(fretState of fretSelection; track $index; let fretNumber = $index) {
@@ -6,5 +6,6 @@
             }
         </div>
     }
-</div>
+</div> -->
+<neck-segment [stringStates]="['default', 'inactive', 'targeted', 'incorrect', 'default', 'default']" />
 

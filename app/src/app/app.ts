@@ -1,12 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NotePrompt } from './features/components/note-prompt/note-prompt';
-import { Navbar } from './features/components/navbar/navbar';
-import { Fretboard } from './features/components/fretboard/fretboard';
+import { FretboardGraph } from './features/components/fretboard-graph/fretboard-graph';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NotePrompt, Navbar, Fretboard],
+  imports: [RouterOutlet, FretboardGraph],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

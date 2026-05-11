@@ -1,4 +1,18 @@
-p {
-    width: fit-content;
-    border: 2px solid white;
+#container {
+    height: 200px;
+    background-color: blue;
+    /* border-right: 20px inset blue; */
+}
+
+.string-segment-container {
+    height: calc(100% / 6);
+    background-color: green;
+    display: flex;
+    align-items: center;
+}
+
+.string-segment {
+    background-color: gray;
+    /* height: 5px; */
+    width: 100%;
 }
