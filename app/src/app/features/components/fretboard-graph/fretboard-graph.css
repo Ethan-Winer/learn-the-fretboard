@@ -1,17 +1,17 @@
+
 .note-dot {
     background-color: blue;
     width: 70%;
     height: 70%;
     border-radius: 50%;
-    /* margin: 10px; */
 }
+
 .note {
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* padding: 5px; */
 }
 
 .guitar-string {
@@ -21,7 +21,10 @@
 }
 
 .container {
-    position: absolute;
+
+    width: 1750px;
+    height: 420px;
+    margin: auto;
 }
 
 
@@ -32,15 +35,55 @@
 }
 
 .string-line-container {
-    /* width: 100%; */
-    /* width: 200px; */
-
-    /* width: fit-content; */
-    z-index: -1;
-    height: 50px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
     width: 100%;
+}
+
+.strings-container {
+    position: absolute;
+    width: 1730px;
+    margin-left: 20px;
+    z-index: -1;
+}
+
+.fret-line {
+    height: 350px;
+    width: 2px;
+    margin-left: -1px;
+    background-color: green;
+}
+
+.frets-container {
+    margin-left: 70px;
+    position: absolute;
+    z-index: -2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.fret-line-container {
+    width: 70px;
+    height: calc(100% - 70px);
+}
+
+.nut {
+    height: 350px;
+    width: 6px;
+    margin-left: -3px;
+    background-color: green;
+}
+
+.fret-numbers {
+    display: flex;
+}
+
+.fret-number {
+    width: 70px;
+    height: 70px;
+    font-size: 22px;
+    text-align: center;
 }

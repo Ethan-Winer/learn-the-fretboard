@@ -1,6 +1,21 @@
 <div class="container">
-    <div class="string-line-container">
-        <div class="string-line"></div>
+
+    <div class="strings-container">
+        @for(stringNumber of getNoteDataKeys(); track $index) {
+            <div class="string-line-container">
+                <div class="string-line"></div>
+            </div>
+        }
+    </div>
+
+    <div class="frets-container">
+        @for(fretNumber of fretRange; track $index) {
+            <div class="fret-line-container">
+                <div class="{{($index === 0 || $index === 12) ? 'nut' : 'fret-line'}}">
+
+                </div>
+            </div>
+        }
     </div>
 
     <div class="notes-container">
@@ -14,6 +29,12 @@
                     </div>
                 }
             </div>
+        }
+    </div>
+
+    <div class="fret-numbers">
+        @for(fretNumber of fretRange; track $index) {
+            <div class="fret-number">{{fretNumber}}</div>
         }
     </div>
 </div>

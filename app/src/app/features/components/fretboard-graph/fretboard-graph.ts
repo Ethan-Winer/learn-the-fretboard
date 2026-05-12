@@ -9,6 +9,7 @@ import { Component, input } from '@angular/core';
 export class FretboardGraph {
   noteStates = [ "active", "inactive", "targeted", "incorrect"]
   fretCount = input<number>(24);
+  fretRange:number[];
   noteData:Record<string, string[]> = {};
 
   constructor() {
@@ -18,12 +19,18 @@ export class FretboardGraph {
         this.noteData[i.toString()].push("active");
       }
     }
+
+    this.fretRange= new Array()
+    for(let i = 0; i <= this.fretCount(); i++) {
+      this.fretRange.push(i);
+    } 
   }
 
 
   getNoteDataKeys() {
     return Object.keys(this.noteData);
   }
+
 
 
   print(output:string) {
