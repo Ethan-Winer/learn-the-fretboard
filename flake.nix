@@ -2,7 +2,7 @@
   description = "flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-26.05";
   };
 
   outputs = { self, nixpkgs, ... }: 
@@ -12,19 +12,19 @@
   in {
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        nodejs_24
-        pnpm
+        nodejs_26
       ];
 
       shellHook = ''
-        export PNPM_HOME="$PWD/pnpm_home"
-        export PATH="$PNPM_HOME:$PATH"
+        export NPM_CONFIG_PREFIX=$PWD/.npm-global
+        export PATH=$PWD/.npm-global/bin:$PATH
         
-        pnpm install --global @angular/cli
-
-        cd ../app
-        pnpm install
-        code .
+        if [ ! -d ".npm-global" ] ; then
+          npm install -g @angular/cli@22
+          cd ./app
+          npm install
+          cd ..
+        fi
 
         exec fish -C 'function fish_prompt
           set_color cyan
