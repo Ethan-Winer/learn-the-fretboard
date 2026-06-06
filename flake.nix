@@ -21,9 +21,7 @@
         
         if [ ! -d ".npm-global" ] ; then
           npm install -g @angular/cli@22
-          cd ./app
           npm install
-          cd ..
         fi
 
         exec fish -C 'function fish_prompt
